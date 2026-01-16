@@ -12,9 +12,9 @@ function BulughulmaramPage(){
 
   return(
   <div>
-    <div className='container'>
-      <CompiledGallery/>
-    </div>
+    {/* <div className='container'> */}
+    <CompiledGallery/>
+    {/* </div> */}
     {/* <AddHadithForm setRefreshToggle={setRefreshToggle}/>; */}
     
   </div>

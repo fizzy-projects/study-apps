@@ -6,8 +6,8 @@ function Home(){
 
     return(
         <div>
-            <h2>Hello</h2>
-            <h6>Compendium of notes available:</h6>
+            <h1>Hello</h1>
+            <h3>Notes available:</h3>
             {/* <button onClick={() => navigate("/bulughul-maram/bulughulmaram")}>
                 Bulughul Maram
             </button> */}
