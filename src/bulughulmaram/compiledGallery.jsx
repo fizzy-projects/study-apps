@@ -92,7 +92,7 @@ function CompiledGallery(){
                             <img
                                 src={img.imageUrl}
                                 alt={img.imageID}
-                                width={350}
+                                // width={350}
                             />
                         </div>
                     ))}
