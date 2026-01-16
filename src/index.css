@@ -68,6 +68,10 @@ button:focus-visible {
   }
 }
 
+.homepage {
+  width: 100vw;
+}
+
 .container {
   display: flex;
   gap: 16px;
