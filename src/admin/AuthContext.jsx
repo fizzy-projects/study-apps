@@ -13,12 +13,18 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     // 1️⃣ Get current session on app load
     supabase.auth.getSession().then(({ data }) => {
+      console.log("Initial get session. Session data below:");
+      console.log(data);
       setUser(data.session?.user ?? null);
+      console.log("setUser input below:");
+      console.log(user);
       setLoading(false);
     });
 
     // 2️⃣ Listen for auth changes
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      console.log("authListener event. Session data:");
+      console.log(session);
       setUser(session?.user ?? null);
       setLoading(false);
     });

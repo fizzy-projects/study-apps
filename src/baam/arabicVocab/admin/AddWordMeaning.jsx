@@ -5,39 +5,41 @@ function AddWordMeaning() {
   const [newWord, setNewWord] = useState("");
   const [meaning, setMeaning] = useState("");
   const [bookName, setBookName] = useState("")
-  const [storyNumber, setStoryNumber] = useState(0);
+  const [storyNumber, setStoryNumber] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
 
   const upsertWord = async()=>{
-    const {data,error} = await supabase
+    const {error} = await supabase
                                 .from("baam_words")
                                 .upsert({word:newWord})
                                 .select();
     return error;
   }
   const upsertMeaning = async()=>{
-    const {data,error} = await supabase
+    const {error} = await supabase
                                 .from("baam_word_meaning")
                                 .upsert({word:newWord,meaning:meaning})
                                 .select();
     return error;
   }
   const upsertBook = async()=>{
-    const {data,error} = await supabase
+    const {error} = await supabase
                                 .from("baam_sources")
                                 .upsert({source:bookName})
                                 .select();
     return error;
   }
   const upsertStoryWords = async()=>{
-    const {data,error} = await supabase
+    const numericStoryNumber = Number(storyNumber);
+    console.log("upserting Story Words.")
+    console.log(`bookName: ${bookName}, storyNumber: ${storyNumber}, word: ${newWord}`);
+    console.log(numericStoryNumber);
+    const {error} = await supabase
                                 .from("baam_story_words")
-                                .upsert({bookName:bookName,storyNumber:storyNumber,word:newWord})
+                                .upsert({bookName:bookName,storyNumber:numericStoryNumber,word:newWord})
                                 .select();
     return error;
   }
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,8 +102,9 @@ function AddWordMeaning() {
         <label>BookName: </label>
         <input
           type="text"
-          value={storyNumber}
+          value={bookName}
           onChange={(e) => {isUpdating? null : setBookName(e.target.value)}}
+          disabled={isUpdating}
         />
       </div>
 
@@ -111,6 +114,7 @@ function AddWordMeaning() {
           type="number"
           value={storyNumber}
           onChange={(e) => {isUpdating? null : setStoryNumber(e.target.value)}}
+          disabled={isUpdating}
         />
       </div>
 
@@ -121,6 +125,7 @@ function AddWordMeaning() {
           value={newWord}
           placeholder="...فعل"
           onChange={(e) => {isUpdating? null: setNewWord(e.target.value)}}
+          disabled={isUpdating}
           required
         />
       </div>
@@ -132,6 +137,7 @@ function AddWordMeaning() {
           value={meaning}
           onChange={(e) => {isUpdating? null : setMeaning(e.target.value)}}
           placeholder="Do..."
+          disabled={isUpdating}
         />
       </div>
 
