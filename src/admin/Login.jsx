@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import supabase from "./supabase-client";
 import { useAuth } from "./AuthContext";
 import ProtectedComponent from "./ProtectedComponent";
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
     const {user,setUser,signOut}=useAuth();
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const navigate=useNavigate();
 
     const login = async(e)=>{
         const {data,error} = await supabase.auth.signInWithPassword({
@@ -20,7 +22,9 @@ function Login() {
             return;
         }
         setUser(data.session);
-        console.log("You have successfully logged in.")
+        navigate("/");
+        // console.log("You have successfully logged in.")
+
     }
 
 
