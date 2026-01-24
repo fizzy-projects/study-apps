@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
     const {user,setUser,signOut}=useAuth();
-    const [email,setEmail]=useState("muhammadhafiz.mohdaziz@gmail.com");
-    const [password,setPassword]=useState("fizzystudy");
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
     const navigate=useNavigate();
 
     const handleSubmit = async(e)=>{
