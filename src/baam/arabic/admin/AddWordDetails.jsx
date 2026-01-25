@@ -45,6 +45,10 @@ function AddWordDetails() {
     };
   },[])
 
+  useEffect(()=>{
+    console.log(bookName);
+  },[bookName])
+
   const upsertWord = async()=>{
     const {error} = await supabase
                                 .from("baam_words")
@@ -137,44 +141,20 @@ function AddWordDetails() {
       <div>
         <form onSubmit={handleSubmit} className="product-form">
           
-          {/* <div>
-            <label>BookName: </label>
-            <input
-              type="text"
-              value={bookName}
-              onChange={(e) => {isUpdating? null : setBookName(e.target.value)}}
-              disabled={isUpdating}
-            />
-          </div> */}
-          
-          <div>
             <AutocompleteInput
                 labelText="BookName:"
                 items={listBooks.map(row=>row.source)}
                 transformItem={(c) => c}
                 value={bookName}
                 disableCondition={isUpdating}
-                // onChange={(val) => {
-                //   setBookName(val);
-                //   setBookSelected(null);
-                // }}
-                onChangeFunc={(e) => {
-                  // console.log("this is onChangeFunc");
-                  setBookName(e.target.value);
-                  // console.log(`finished onChangeFunc. bookName: ${bookName}`)
-                  // console.log(bookName);
-                  // setBookSelected("");
-                }}
+                onChangeObjects={
+                  {setState:setBookName}
+                }
                 onSelectFunc={(transformedItem) => {
-                  // console.log("this is onSelectFunc.");
                   setBookName(transformedItem);
-                  // console.log(`completed setting bookName: ${bookName}`);
-                  // console.log(bookName);
-                  // setBookSelected(transformedItem);
                 }}
                 placeholder="Type the source of the word"
             />
-          </div>
 
 
           <div>
@@ -182,29 +162,32 @@ function AddWordDetails() {
             <input
               type="number"
               value={storyNumber}
-              onChange={(e) => {isUpdating? null : setStoryNumber(e.target.value)}}
+              onChange={(e) => setStoryNumber(e.target.value)}
               disabled={isUpdating}
             />
           </div>
 
-          <div>
-            <label>Word: </label>
-            <input
-              type="text"
-              value={newWord}
-              placeholder="...فعل"
-              onChange={(e) => {isUpdating? null: setNewWord(e.target.value)}}
-              disabled={isUpdating}
-              required
+            <AutocompleteInput
+                labelText="Word:"
+                items={listWords.map(row=>row.word)}
+                transformItem={(c) => c}
+                value={newWord}
+                disableCondition={isUpdating}
+                onChangeObjects={
+                  {setState:setNewWord}
+                }
+                onSelectFunc={(transformedItem) => {
+                  setNewWord(transformedItem);
+                }}
+                placeholder="Type the word to be added"
             />
-          </div>
 
           <div>
             <label>Meaning: </label>
             <input
               type="text"
               value={meaning}
-              onChange={(e) => {isUpdating? null : setMeaning(e.target.value)}}
+              onChange={(e) => setMeaning(e.target.value)}
               placeholder="Do..."
               disabled={isUpdating}
             />

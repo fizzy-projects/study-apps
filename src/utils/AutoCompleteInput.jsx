@@ -27,24 +27,14 @@ function AutocompleteInput({
                                         items, //list
                                         transformItem = (c)=>c , // function to transform an item from items to a transformed item
                                         value, //form input value which references a state value
-                                        onChangeFunc, // function to apply setState using the new value
+                                        onChangeObjects, // object containing setStates
                                         onSelectFunc, //function
                                         placeholder = "Type to search",
                                         disableCondition
                                         }) {
-    const filtered = useAutocomplete(items, transformItem, value);
     const [isOpen, setIsOpen] = useState(false);
-    useEffect(() => {
-        if (filtered.length > 0) {
-        setIsOpen(true);
-        } else {
-        setIsOpen(false);
-        }
-    }, [filtered]);
-    // const handleSelect = (item) => {
-    //     onSelect(item);
-    //     setIsOpen(false); // <-- close the dropdown
-    // };
+    const filtered = useAutocomplete(items, transformItem, value);
+
 
     return (
         <div className="autocomplete">
@@ -53,7 +43,11 @@ function AutocompleteInput({
                 className="autocomplete-input"
                 value={value}
                 // onChange={(e) => onChange(e.target.value)}
-                onChange={onChangeFunc}
+                onChange={(e)=>{
+                    onChangeObjects.setState(e.target.value);
+                    setIsOpen(true);
+                    }
+                }
                 placeholder={placeholder}
                 disabled={disableCondition}
             />
@@ -66,9 +60,7 @@ function AutocompleteInput({
                     className="autocomplete-item"
                     onClick={() => {//console.log("this is onClick function"); 
                                     onSelectFunc(transformedItem);
-                                    //console.log(`isOpen: ${isOpen}, filtered.length: ${filtered.length}`);
                                     setIsOpen(false);
-                                    //console.log(`isOpen: ${isOpen}, filtered.length: ${filtered.length}`);
                                     }
                             }
                     >
