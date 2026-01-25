@@ -30,8 +30,21 @@ function AutocompleteInput({
                                         onChangeFunc, // function to apply setState using the new value
                                         onSelectFunc, //function
                                         placeholder = "Type to search",
+                                        disableCondition
                                         }) {
     const filtered = useAutocomplete(items, transformItem, value);
+    const [isOpen, setIsOpen] = useState(false);
+    useEffect(() => {
+        if (filtered.length > 0) {
+        setIsOpen(true);
+        } else {
+        setIsOpen(false);
+        }
+    }, [filtered]);
+    // const handleSelect = (item) => {
+    //     onSelect(item);
+    //     setIsOpen(false); // <-- close the dropdown
+    // };
 
     return (
         <div className="autocomplete">
@@ -42,15 +55,22 @@ function AutocompleteInput({
                 // onChange={(e) => onChange(e.target.value)}
                 onChange={onChangeFunc}
                 placeholder={placeholder}
+                disabled={disableCondition}
             />
 
-            {filtered.length > 0 && (
+            {isOpen && filtered.length > 0 && (
                 <ul className="autocomplete-list">
                 {filtered.map((transformedItem) => ( // Filtered is usually a list of values, not a list of rows of values. So an item is a value.
                     <li
                     key={transformedItem}
                     className="autocomplete-item"
-                    onClick={() => onSelectFunc(transformedItem)}
+                    onClick={() => {//console.log("this is onClick function"); 
+                                    onSelectFunc(transformedItem);
+                                    //console.log(`isOpen: ${isOpen}, filtered.length: ${filtered.length}`);
+                                    setIsOpen(false);
+                                    //console.log(`isOpen: ${isOpen}, filtered.length: ${filtered.length}`);
+                                    }
+                            }
                     >
                     {transformedItem}
                     </li>

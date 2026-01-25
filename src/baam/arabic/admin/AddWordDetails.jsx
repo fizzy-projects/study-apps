@@ -16,8 +16,8 @@ function AddWordDetails() {
   // Form control states
   const [isUpdating, setIsUpdating] = useState(false);
   // Form autocomplete selections
-  const [bookSelected,setBookSelected]=useState(null);
-  const [wordSelected,setWordSelected]=useState(null);
+  // const [bookSelected,setBookSelected]=useState(null);
+  // const [wordSelected,setWordSelected]=useState(null);
 
   useEffect(()=>{
     // Fetches initial lists for books and words
@@ -153,17 +153,24 @@ function AddWordDetails() {
                 items={listBooks.map(row=>row.source)}
                 transformItem={(c) => c}
                 value={bookName}
+                disableCondition={isUpdating}
                 // onChange={(val) => {
                 //   setBookName(val);
                 //   setBookSelected(null);
                 // }}
                 onChangeFunc={(e) => {
+                  // console.log("this is onChangeFunc");
                   setBookName(e.target.value);
-                  setBookSelected("");
+                  // console.log(`finished onChangeFunc. bookName: ${bookName}`)
+                  // console.log(bookName);
+                  // setBookSelected("");
                 }}
                 onSelectFunc={(transformedItem) => {
+                  // console.log("this is onSelectFunc.");
                   setBookName(transformedItem);
-                  setBookSelected(transformedItem);
+                  // console.log(`completed setting bookName: ${bookName}`);
+                  // console.log(bookName);
+                  // setBookSelected(transformedItem);
                 }}
                 placeholder="Type the source of the word"
             />
