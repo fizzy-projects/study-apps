@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import supabase from "../../../admin/supabase-client";
 import createSupabaseChannel from "../../../utils/createSupabaseChannel";
 import ProtectedComponent from "../../../admin/ProtectedComponent";
-// import CreatableSelect from "react-select/creatable";
 import AutocompleteInput from "../../../utils/AutoCompleteInput";
 
 function AddWordDetails() {
