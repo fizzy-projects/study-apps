@@ -6,8 +6,8 @@ function Layout( {includeHeader=false} ) {
       
       {includeHeader && 
         <div>
-            <header style={{ padding: "1rem", background: "#eee" }}>
-            <nav>
+            <header style={{ padding: "1rem" }}>
+            <nav style={{color:"purple"}}>
               <Link to="/">Home</Link> |{" "}
               <Link to="/login">Admin</Link> |{" "}
             </nav>

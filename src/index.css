@@ -6,8 +6,9 @@
   color-scheme: light dark;
   /* color: rgba(255, 255, 255, 0.87); */
   /* background-color: #242424; */
-  color: #213547;
-  background-color: #ffffff;
+  /* color: var(--colour5,#213547); */
+  /* background-color: #ffffff; */
+  background-color: var(--colour5, #ffffff);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -37,6 +38,10 @@ h1 {
   line-height: 1.1;
 }
 
+header {
+  background-color: var(--colour4);
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -45,7 +50,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #f9f9f9;
+  background-color: var(--colour4,#f9f9f9);
   cursor: pointer;
   transition: border-color 0.25s;
 }
