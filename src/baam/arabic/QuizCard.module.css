@@ -5,9 +5,17 @@
     flex-wrap: wrap;
     box-sizing: content-box;
     padding: 10px;
+    padding-top: 0px;
     border-radius: 10px;
     background-color: var(--colour3, white);
     margin: 10px;
+}
+
+.progressDiv {
+    margin-left: auto;
+    /* width:100%; */
+    text-align: right;
+    padding-right: 5px;
 }
 
 .quizWord {
@@ -18,16 +26,25 @@
     aspect-ratio: 2/1;
 }
 
-.meanings {
+.meaningsContainer {
     display: flex;
     width:100%;
-    flex-wrap: wrap;;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    overflow-y:scroll;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    
 }
 
 .meaning {
     text-align:left;
-    width:100%;
+    width:90%;
     padding-left: 10%;
+    /* background-color: aqua; */
+    border-radius: 15px;
+    border-bottom: 1px solid lightgray;
 }
 
 .meaningsBtnContainer {

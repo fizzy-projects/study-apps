@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 // import styles2 from "../../utils/colours/DebuggingCSS.module.css";
 import styles from "./QuizCard.module.css";
-import { UNSAFE_useFogOFWarDiscovery } from "react-router-dom";
+
 
 export function QuizCard({ testedWords, testedWordMeanings}){
     
@@ -84,7 +84,6 @@ export function QuizCard({ testedWords, testedWordMeanings}){
     const handlePrev = ()=>{
         setTestNumber((testNumber-1+testLength)%testLength);
     }
-
     const toggleShowMeaning = ()=>{
         setShowMeaning(prev => !prev);
     };
@@ -93,17 +92,23 @@ export function QuizCard({ testedWords, testedWordMeanings}){
     return(
         <div className={styles.quizCard}>
 
+            <div className={styles.progressDiv}>
+                <h3 style={{color:"grey"}} >{testNumber+1} / {testLength}</h3>
+            </div>
+
             {/* Div for tested word */}
             <div className={styles.quizWord}>
-                <h2>{testedWord}</h2>
+                <h1>{testedWord}</h1>
             </div>
 
             {/* Div for meanings */} 
-            <div className={styles.meanings} style={{minHeight:`${minHeight}px`}}>
+            <div className={styles.meaningsContainer} 
+            style={{minHeight:`${minHeight}px`}}
+            >
                 {showMeaning && testedMeaning.map((meaning,i)=>
-                    <div key={i} className={styles.meaning}>
+                    (<div key={i} className={styles.meaning}>
                         {<h4>{meaning}</h4>}
-                    </div>
+                    </div>)
                 )}
             </div>
             

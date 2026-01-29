@@ -39,14 +39,21 @@ export default function ArabicQuiz(){
 
     return(
             isLoadingArabic?  <Spinner/> :
-            <div style={{backgroundColor:"var(--colour4,white)"}}>
-                <h2 style={{color:"black"}}>Arabic Quiz</h2>
-                <QuizCard 
-                testedWords={testedWords}
-                testedWordMeanings={testedWordMeanings}
-
-                />
+            <div>
+                <select >
+                    {[...new Set(Object.values(tblStoryWords)
+                            .map(row=> <option value="row.number">{row.number}</option> )
+                    )]}
+                </select>
+                <div style={{backgroundColor:"var(--colour4,white)"}}>
+                    <h2 style={{color:"black"}}>Arabic Quiz</h2>
+                    <QuizCard 
+                    testedWords={testedWords}
+                    testedWordMeanings={testedWordMeanings}
+                    />
+                </div>
             </div>
+
             
     );
 }
