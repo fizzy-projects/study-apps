@@ -11,7 +11,7 @@ const softSand = {
     "--colour2":"#d6ccc2ff", // dust-grey
     "--colour3":"#f5ebe0ff", // linen
     "--colour4":"#e3d5caff", // powder-petal
-    "--almond-silk":"#d5bdafff" // almond-silk
+    "--colour5":"#d5bdafff" // almond-silk
 };
 
 export const themes = {

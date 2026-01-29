@@ -12,5 +12,5 @@ export function ThemeUpdater ({children}) {
         });
     }, [themeName]);
 
-    return (<children/>); // This component only updates variables
+    return (children); // This component only updates variables
 }

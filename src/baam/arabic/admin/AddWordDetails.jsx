@@ -111,7 +111,6 @@ export default function AddWordDetails(){
     return (
         (isLoadingArabic? <Spinner/> :
         <ProtectedComponent>
-            <h1>this is addworddetails2</h1>
             <div style={{marginTop:"2rem", width:"90vw"}}>
                 <form onSubmit={handleSubmit}
                 style={{width:"100%", display:"flex", flexDirection:"column", gap:"0.3rem"}}
