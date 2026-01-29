@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import supabase from "../../admin/supabase-client";
 import createSupabaseChannel from "../../utils/createSupabaseChannel";
+import ProtectedComponent from "../../admin/ProtectedComponent";
 
 export default function ArabicList(){
     const [wordlist,setWordlist] = useState([]);
@@ -29,17 +30,19 @@ export default function ArabicList(){
 
 
     return(
-        <div>
-            
-            <div className="dropdown">
-                <h4>Word List</h4>
-                <select>
-                    {wordlist.map((row,i) => (
-                        <option key={i}> {row.word} </option>
-                    ))}
-                </select>
+        <ProtectedComponent>
+            <div>
+                <div className="dropdown">
+                    <h4>Word List</h4>
+                    <select>
+                        {wordlist.map((row,i) => (
+                            <option key={i}> {row.word} </option>
+                        ))}
+                    </select>
+                </div>
             </div>
-        </div>
+        </ProtectedComponent>
+
 
     )
 };

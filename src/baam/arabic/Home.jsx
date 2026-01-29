@@ -9,18 +9,26 @@ export default function ArabicHome(){
     }
     return(
         <div className="mainBody" 
-        style={{gap:"0.5rem", marginTop:"4rem",display:"flex", flexDirection:"column"}}
+        style={{gap:"0.5rem", 
+                // marginTop:"4rem",
+                display:"flex", flexDirection:"column"}}
         >
+
+            <h1>Vocab Revision</h1>
             <div>
                 <button onClick={() => navigateArabic("quiz")}>
-                    Quiz
+                    القراءة الراشدة
                 </button>
             </div>
-            <div>
-                <button onClick={() => navigateArabic("list")}>
-                    Arabic Words
-                </button>
-            </div>
+
+            <ProtectedComponent>
+                <div>
+                    <button onClick={() => navigateArabic("list")}>
+                        Arabic Words
+                    </button>
+                </div>
+            </ProtectedComponent>
+
             <ProtectedComponent>
                 <div>
                     <button onClick={() => navigateArabic("addword")}>

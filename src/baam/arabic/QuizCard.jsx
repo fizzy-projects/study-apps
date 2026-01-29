@@ -91,7 +91,7 @@ export function QuizCard({ testedWords, testedWordMeanings}){
 
     return(
         <div className={styles.quizCard}>
-
+            
             <div className={styles.progressDiv}>
                 <h3 style={{color:"grey"}} >{testNumber+1} / {testLength}</h3>
             </div>
@@ -103,7 +103,7 @@ export function QuizCard({ testedWords, testedWordMeanings}){
 
             {/* Div for meanings */} 
             <div className={styles.meaningsContainer} 
-            style={{minHeight:`${minHeight}px`}}
+            style={{height:`${minHeight}px`}}
             >
                 {showMeaning && testedMeaning.map((meaning,i)=>
                     (<div key={i} className={styles.meaning}>
