@@ -61,6 +61,7 @@ export function QuizCard({ testedWords, testedWordMeanings}){
     useEffect(()=>{
         setTestNumber(0);
         setTestLength(Object.keys(testedWords).length);
+        setTestedWord(testedWords[0]);
     },[testedWords])
     
     useEffect(()=>{
