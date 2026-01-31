@@ -115,7 +115,7 @@ export function QuizCard({ testedWords, testedWordMeanings}){
             
             <div className={styles.meaningsBtnContainer}>
                 <button  className={styles.meaningsButton} onClick={toggleShowMeaning}>
-                    Show Meanings
+                    {showMeaning? "Hide Meanings" : "Show Meanings"}
                 </button>
             </div>
 
